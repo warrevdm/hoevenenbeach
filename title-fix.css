@@ -1,0 +1,22 @@
+/* Final mobile title correction: keep the long word HOEVENEN fully inside the viewport. */
+@media (max-width: 700px) {
+  .hero-copy,
+  .hero h1 {
+    overflow: visible;
+  }
+
+  .hero h1 span:first-child {
+    display: block;
+    width: max-content;
+    max-width: 100%;
+    font-size: .84em;
+    letter-spacing: -.075em;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero h1 span:first-child {
+    font-size: .81em;
+  }
+}
