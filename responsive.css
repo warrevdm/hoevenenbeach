@@ -1,0 +1,583 @@
+/* Responsive refinements layered on top of styles.css */
+
+:root {
+  --page-gutter: clamp(18px, 4vw, 72px);
+  --content-max: 1600px;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+}
+
+.site-header,
+.hero,
+.section,
+.footer {
+  padding-left: max(var(--page-gutter), env(safe-area-inset-left));
+  padding-right: max(var(--page-gutter), env(safe-area-inset-right));
+}
+
+.site-header > *,
+.hero > *,
+.section > *,
+.footer > * {
+  min-width: 0;
+}
+
+.hero-copy,
+.event-grid,
+.weekend-head,
+.day-grid,
+.legends-grid,
+.practical-grid,
+.partners-head,
+.partner-featured,
+.partner-grid,
+.final-copy {
+  width: 100%;
+}
+
+.hero-intro,
+.event-copy p,
+.weekend-head p,
+.legends-copy > p:last-child,
+.partners-head p,
+.info-card p {
+  overflow-wrap: anywhere;
+}
+
+/* Keep very wide screens intentional instead of stretched out. */
+@media (min-width: 1600px) {
+  .site-header,
+  .hero,
+  .section,
+  .footer {
+    padding-left: max(calc((100vw - var(--content-max)) / 2), 72px);
+    padding-right: max(calc((100vw - var(--content-max)) / 2), 72px);
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1.45fr) minmax(320px, .55fr);
+  }
+
+  .hero h1 {
+    font-size: min(190px, 11vw);
+  }
+}
+
+/* Laptop / smaller desktop */
+@media (max-width: 1280px) {
+  .site-header {
+    grid-template-columns: 1fr auto;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+    gap: 32px;
+    padding-top: 125px;
+  }
+
+  .hero h1 {
+    font-size: clamp(72px, 12.5vw, 150px);
+  }
+
+  .hero-ticket {
+    width: 100%;
+  }
+
+  .event-grid,
+  .legends-grid,
+  .practical-grid {
+    gap: 5vw;
+  }
+
+  .weekend-head,
+  .partners-head {
+    gap: 40px;
+  }
+
+  .partner-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Tablet */
+@media (max-width: 980px) {
+  .site-header {
+    padding-top: 16px;
+    padding-bottom: 16px;
+  }
+
+  .hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    align-items: start;
+    gap: 28px;
+    padding-top: 118px;
+    padding-bottom: 42px;
+  }
+
+  .hero-copy {
+    max-width: 760px;
+  }
+
+  .hero h1 {
+    font-size: clamp(70px, 15vw, 132px);
+    line-height: .78;
+  }
+
+  .hero h1 span:last-child {
+    margin-left: clamp(0px, 5vw, 54px);
+  }
+
+  .hero-intro,
+  .hero-actions {
+    margin-left: 0;
+  }
+
+  .hero-ticket {
+    justify-self: start;
+    width: min(360px, 100%);
+  }
+
+  .presented-by {
+    flex-wrap: wrap;
+    gap: 10px 14px;
+  }
+
+  .presented-by img {
+    width: min(300px, 72vw);
+  }
+
+  .event-grid,
+  .weekend-head,
+  .legends-grid,
+  .practical-grid,
+  .partners-head {
+    grid-template-columns: 1fr;
+  }
+
+  .event-grid,
+  .legends-grid,
+  .practical-grid {
+    gap: 48px;
+  }
+
+  .weekend-head,
+  .partners-head {
+    gap: 24px;
+  }
+
+  .event-copy {
+    max-width: 720px;
+  }
+
+  .weekend-head p,
+  .partners-head p {
+    max-width: 640px;
+  }
+
+  .day-card {
+    min-height: 520px;
+  }
+
+  .legends-art {
+    min-height: clamp(340px, 55vw, 500px);
+    transform: rotate(1deg);
+  }
+
+  .practical-title h2 {
+    position: static;
+  }
+
+  .partner-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .final-court {
+    width: 95vw;
+    right: -38vw;
+    top: 28%;
+  }
+
+  .footer {
+    grid-template-columns: 1fr auto;
+  }
+
+  .footer-meta {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+/* Phones */
+@media (max-width: 700px) {
+  :root {
+    --page-gutter: clamp(16px, 5vw, 24px);
+  }
+
+  .section {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .section-kicker {
+    margin-bottom: 36px;
+  }
+
+  .brand-mark {
+    width: 40px;
+    border-width: 2px;
+    font-size: 13px;
+  }
+
+  .brand-copy {
+    font-size: 11px;
+  }
+
+  .nav-cta {
+    padding: 8px 10px;
+    white-space: nowrap;
+  }
+
+  .hero {
+    padding-top: 104px;
+    padding-bottom: 32px;
+    gap: 24px;
+  }
+
+  .hero h1 {
+    font-size: clamp(58px, 21vw, 104px);
+    line-height: .8;
+  }
+
+  .hero h1 span:last-child {
+    margin-left: 0;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .hero-intro {
+    margin-top: 24px;
+    font-size: clamp(16px, 4.6vw, 19px);
+  }
+
+  .hero-actions {
+    width: 100%;
+    margin-top: 22px;
+    gap: 10px;
+  }
+
+  .button {
+    min-height: 50px;
+    flex: 1 1 180px;
+    padding: 0 16px;
+  }
+
+  .hero-ticket {
+    width: 100%;
+    max-width: 390px;
+    padding: 20px;
+    box-shadow: 8px 10px 0 rgba(17,17,15,.12);
+  }
+
+  .ticket-date strong {
+    font-size: clamp(58px, 20vw, 86px);
+  }
+
+  .ticket-month {
+    font-size: clamp(40px, 14vw, 56px);
+  }
+
+  .presented-by {
+    margin-top: 10px;
+  }
+
+  .presented-by img {
+    width: min(250px, 70vw);
+  }
+
+  .sponsor-strip-track {
+    gap: 20px;
+    padding: 12px 0;
+    font-size: 15px;
+  }
+
+  .sponsor-strip-track img {
+    width: 170px;
+  }
+
+  .event-title h2,
+  .weekend-head h2,
+  .legends-copy h2,
+  .practical-title h2,
+  .partners-head h2 {
+    font-size: clamp(48px, 15vw, 86px);
+    line-height: .86;
+  }
+
+  .event-copy .lead {
+    font-size: clamp(21px, 6vw, 28px);
+  }
+
+  .event-copy p,
+  .weekend-head p,
+  .legends-copy > p:last-child,
+  .partners-head p {
+    font-size: 16px;
+  }
+
+  .stat-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    margin-top: 30px;
+  }
+
+  .stat-row div,
+  .stat-row div:nth-child(2),
+  .stat-row div:last-child {
+    padding: 16px 8px 0;
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+  }
+
+  .stat-row div:first-child {
+    padding-left: 0;
+  }
+
+  .stat-row div:last-child {
+    border-right: 0;
+    padding-right: 0;
+  }
+
+  .stat-row strong {
+    font-size: clamp(34px, 10vw, 48px);
+  }
+
+  .stat-row span {
+    font-size: 10px;
+  }
+
+  .day-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .day-card {
+    min-height: 460px;
+    padding: 22px;
+  }
+
+  .day-number {
+    font-size: clamp(92px, 29vw, 150px);
+  }
+
+  .day-card h3 {
+    font-size: clamp(42px, 13vw, 68px);
+  }
+
+  .day-meta {
+    gap: 16px;
+  }
+
+  .legends-art {
+    min-height: 330px;
+  }
+
+  .net {
+    height: 84px;
+    background-size: 22px 18px;
+  }
+
+  .legend-ball {
+    width: 125px;
+    border-width: 4px;
+  }
+
+  .scoreboard {
+    top: 18px;
+    left: 18px;
+    right: 18px;
+    font-size: 10px;
+  }
+
+  .info-card {
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    gap: 12px;
+    padding: 22px 0;
+  }
+
+  .info-card h3 {
+    font-size: 24px;
+  }
+
+  .info-card > a,
+  .info-icon {
+    font-size: 22px;
+  }
+
+  .partner-featured {
+    min-height: 180px;
+    margin-top: 36px;
+    padding: 54px 22px 28px;
+  }
+
+  .partner-featured img {
+    width: min(520px, 92%);
+  }
+
+  .partner-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .partner-logo {
+    min-height: 128px;
+    padding: 16px;
+  }
+
+  .partner-logo img {
+    max-height: 74px;
+    max-width: 90%;
+  }
+
+  .final-cta {
+    min-height: 520px;
+  }
+
+  .final-copy h2 {
+    font-size: clamp(62px, 20vw, 108px);
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+
+  .footer-brand,
+  .footer-credit {
+    justify-self: center;
+  }
+
+  .footer-meta {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+/* Small phones */
+@media (max-width: 460px) {
+  .site-header {
+    gap: 10px;
+  }
+
+  .brand-copy {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: clamp(52px, 20vw, 86px);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .button {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .ticket-date strong {
+    font-size: clamp(52px, 18vw, 72px);
+  }
+
+  .stat-row {
+    grid-template-columns: 1fr;
+    border-top: 0;
+  }
+
+  .stat-row div,
+  .stat-row div:nth-child(2),
+  .stat-row div:last-child {
+    display: grid;
+    grid-template-columns: 82px 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 0;
+    border-right: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .stat-row strong {
+    font-size: 38px;
+  }
+
+  .info-card {
+    grid-template-columns: 28px minmax(0, 1fr);
+  }
+
+  .info-card > a,
+  .info-icon {
+    grid-column: 2;
+    justify-self: start;
+    margin-top: 6px;
+  }
+
+  .partner-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-logo {
+    min-height: 140px;
+  }
+
+  .final-court {
+    width: 140vw;
+    right: -75vw;
+    top: 34%;
+  }
+}
+
+/* Landscape phones and short-height devices */
+@media (max-height: 700px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding-top: 92px;
+  }
+
+  .hero h1 {
+    font-size: clamp(64px, 12vw, 118px);
+  }
+
+  .hero-intro {
+    max-width: 580px;
+  }
+
+  .hero-ticket {
+    max-width: 300px;
+  }
+}
+
+/* Touch devices: avoid hover transforms that can feel sticky. */
+@media (hover: none) {
+  .button:hover,
+  .partner-logo:hover {
+    transform: none;
+  }
+}
