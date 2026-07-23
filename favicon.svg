@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Hoevenen Beach">
+  <rect width="64" height="64" rx="14" fill="#f4bb3c"/>
+  <rect x="9" y="9" width="46" height="46" rx="5" fill="none" stroke="#11110f" stroke-width="4" transform="rotate(-3 32 32)"/>
+  <text x="32" y="39" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-size="23" font-weight="900" letter-spacing="-2" fill="#11110f">HB</text>
+</svg>
