@@ -143,6 +143,33 @@
   letter-spacing: -.04em;
 }
 
+.team-table tbody tr.wildcard-team {
+  background: rgba(255,253,247,.78);
+  box-shadow: inset 5px 0 0 var(--yellow);
+}
+
+.team-table tbody tr.wildcard-team:hover {
+  background: rgba(255,253,247,.92);
+}
+
+.wildcard-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  margin-left: 12px;
+  padding: 0 9px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--yellow);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .08em;
+  line-height: 1;
+  text-transform: uppercase;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
 @media (max-width: 980px) {
   .teams-head {
     grid-template-columns: 1fr;
@@ -210,6 +237,10 @@
     background: var(--yellow);
   }
 
+  .team-table tbody tr.wildcard-team {
+    box-shadow: inset 4px 0 0 var(--yellow);
+  }
+
   .team-table td,
   .team-table td:first-child,
   .team-table td:last-child {
@@ -240,6 +271,15 @@
   .team-points {
     font-size: 16px;
     white-space: nowrap;
+  }
+
+  .wildcard-badge {
+    display: flex;
+    width: fit-content;
+    min-height: 23px;
+    margin: 6px 0 0;
+    padding: 0 8px;
+    font-size: 8px;
   }
 }
 
