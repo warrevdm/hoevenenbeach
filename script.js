@@ -1,6 +1,6 @@
 const pressPhotos = [
-  'assets/press/pwa2026052424408.webp',
-  'assets/press/pwa202605246796.webp'
+  'assets/press/pwa2026052424408.jpg',
+  'assets/press/pwa202605246796.jpg'
 ];
 
 const pressImages = document.querySelectorAll('.press-card .press-image');
