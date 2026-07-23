@@ -62,22 +62,21 @@
 }
 
 .press-card a {
-  min-height: 250px;
+  min-height: 430px;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 34px;
-  padding: 28px;
+  overflow: hidden;
   border: 2px solid var(--ink);
   background: var(--white);
+  color: inherit;
   text-decoration: none;
   box-shadow: 8px 9px 0 rgba(17, 17, 15, .14);
   transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
 }
 
 .press-card:first-child a {
-  min-height: 300px;
+  min-height: 560px;
   background: var(--yellow);
 }
 
@@ -93,11 +92,103 @@
   background: #f8c957;
 }
 
+.press-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 2px solid var(--ink);
+  background:
+    linear-gradient(135deg, rgba(244,187,60,.86), rgba(235,127,40,.86)),
+    var(--ink);
+}
+
+.press-card:first-child .press-media {
+  aspect-ratio: 2.2 / 1;
+}
+
+.press-image {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  transition: transform .45s ease, filter .25s ease;
+}
+
+.press-card a:hover .press-image,
+.press-card a:focus-visible .press-image {
+  transform: scale(1.035);
+}
+
+.press-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(17,17,15,.34), transparent 48%);
+  pointer-events: none;
+}
+
+.press-read-label {
+  position: absolute;
+  z-index: 2;
+  left: 18px;
+  bottom: 16px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid rgba(255,255,255,.75);
+  border-radius: 999px;
+  background: rgba(17,17,15,.72);
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  backdrop-filter: blur(5px);
+}
+
+.press-card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 34px;
+  padding: 26px 28px 30px;
+}
+
 .press-source-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
+}
+
+.press-publication {
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.press-logo-shell {
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: #fff;
+}
+
+.press-logo {
+  width: 72%;
+  height: 72%;
+  display: block;
+  object-fit: contain;
 }
 
 .press-source {
@@ -111,9 +202,11 @@
   font-weight: 800;
   letter-spacing: .1em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .press-arrow {
+  flex: 0 0 auto;
   font: 900 28px/1 "Archivo Black", sans-serif;
 }
 
@@ -131,6 +224,15 @@
   font-size: clamp(32px, 4vw, 64px);
 }
 
+.press-image-credit {
+  margin: 18px 0 0;
+  position: relative;
+  z-index: 1;
+  font-size: 11px;
+  line-height: 1.5;
+  opacity: .68;
+}
+
 @media (max-width: 980px) {
   .press-head {
     grid-template-columns: 1fr;
@@ -139,6 +241,10 @@
 
   .press-head p {
     max-width: 680px;
+  }
+
+  .press-card:first-child .press-media {
+    aspect-ratio: 16 / 8;
   }
 }
 
@@ -164,7 +270,7 @@
 
   .press-grid {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: 12px;
   }
 
   .press-card:first-child {
@@ -174,9 +280,29 @@
   .press-card a,
   .press-card:first-child a {
     min-height: 0;
-    padding: 22px;
-    gap: 34px;
     box-shadow: 6px 7px 0 rgba(17, 17, 15, .14);
+  }
+
+  .press-media,
+  .press-card:first-child .press-media {
+    aspect-ratio: 16 / 10;
+  }
+
+  .press-card-content {
+    gap: 26px;
+    padding: 20px 20px 22px;
+  }
+
+  .press-logo-shell {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+
+  .press-source {
+    min-height: 31px;
+    padding: 0 9px;
+    font-size: 9px;
   }
 
   .press-title,
@@ -187,9 +313,18 @@
 }
 
 @media (max-width: 390px) {
-  .press-card a,
-  .press-card:first-child a {
+  .press-card-content {
     padding: 18px;
+  }
+
+  .press-publication {
+    gap: 8px;
+  }
+
+  .press-logo-shell {
+    width: 36px;
+    height: 36px;
+    flex-basis: 36px;
   }
 
   .press-title,
@@ -199,7 +334,8 @@
 }
 
 @media (hover: none) {
-  .press-card a:hover {
+  .press-card a:hover,
+  .press-card a:hover .press-image {
     transform: none;
   }
 }
