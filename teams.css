@@ -1,0 +1,264 @@
+/* Participating teams section */
+.teams {
+  background: var(--orange);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.teams::before {
+  content: "24 TEAMS";
+  position: absolute;
+  right: -2vw;
+  top: 38px;
+  color: rgba(255,255,255,.08);
+  font: 900 clamp(80px, 15vw, 240px)/.8 "Archivo Black", sans-serif;
+  letter-spacing: -.08em;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.teams-head {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+  gap: 6vw;
+  align-items: end;
+  margin-bottom: 52px;
+}
+
+.teams-head h2 {
+  margin: 0;
+  color: var(--white);
+  font-size: clamp(58px, 8vw, 132px);
+  line-height: .84;
+}
+
+.teams-head h2 span {
+  color: var(--ink);
+}
+
+.teams-intro {
+  max-width: 560px;
+}
+
+.teams-intro p {
+  margin: 0;
+  font-size: clamp(18px, 1.7vw, 24px);
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.teams-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.teams-meta span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0 13px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.teams-table-wrap {
+  position: relative;
+  z-index: 1;
+  border: 2px solid var(--ink);
+  background: var(--sand-light);
+  box-shadow: 14px 16px 0 rgba(17,17,15,.18);
+  overflow: hidden;
+}
+
+.team-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.team-table th,
+.team-table td {
+  padding: 17px 18px;
+  border-bottom: 1px solid rgba(17,17,15,.2);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.team-table th {
+  background: var(--ink);
+  color: var(--white);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+.team-table th:first-child,
+.team-table td:first-child {
+  width: 70px;
+  text-align: center;
+}
+
+.team-table th:last-child,
+.team-table td:last-child {
+  width: 150px;
+  text-align: right;
+}
+
+.team-table tbody tr {
+  transition: background .2s ease, transform .2s ease;
+}
+
+.team-table tbody tr:hover {
+  background: rgba(244,187,60,.28);
+}
+
+.team-table tbody tr:first-child {
+  background: var(--yellow);
+}
+
+.team-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.team-rank {
+  font: 900 18px/1 "Archivo Black", sans-serif;
+}
+
+.team-name {
+  font-size: 16px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.team-points {
+  font: 900 19px/1 "Archivo Black", sans-serif;
+  letter-spacing: -.04em;
+}
+
+@media (max-width: 980px) {
+  .teams-head {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .teams-intro {
+    max-width: 680px;
+  }
+}
+
+@media (max-width: 700px) {
+  .teams::before {
+    top: 34px;
+    right: -24px;
+    font-size: 30vw;
+  }
+
+  .teams-head {
+    margin-bottom: 32px;
+  }
+
+  .teams-head h2 {
+    font-size: clamp(44px, 13vw, 66px);
+    line-height: .88;
+  }
+
+  .teams-intro p {
+    font-size: 17px;
+  }
+
+  .teams-table-wrap {
+    border-width: 1px;
+    box-shadow: 7px 8px 0 rgba(17,17,15,.18);
+    background: transparent;
+    overflow: visible;
+  }
+
+  .team-table,
+  .team-table tbody {
+    display: block;
+    width: 100%;
+  }
+
+  .team-table thead {
+    display: none;
+  }
+
+  .team-table tbody {
+    display: grid;
+    gap: 8px;
+    padding: 8px;
+    background: var(--ink);
+  }
+
+  .team-table tr {
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    align-items: center;
+    min-width: 0;
+    background: var(--sand-light);
+  }
+
+  .team-table tbody tr:first-child {
+    background: var(--yellow);
+  }
+
+  .team-table td,
+  .team-table td:first-child,
+  .team-table td:last-child {
+    width: auto;
+    min-width: 0;
+    padding: 14px 10px;
+    border: 0;
+    text-align: left;
+  }
+
+  .team-table td:first-child {
+    text-align: center;
+  }
+
+  .team-table td:last-child {
+    text-align: right;
+  }
+
+  .team-rank {
+    font-size: 15px;
+  }
+
+  .team-name {
+    font-size: 14px;
+    line-height: 1.35;
+  }
+
+  .team-points {
+    font-size: 16px;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 380px) {
+  .team-table tr {
+    grid-template-columns: 34px minmax(0, 1fr) 58px;
+  }
+
+  .team-table td,
+  .team-table td:first-child,
+  .team-table td:last-child {
+    padding: 12px 7px;
+  }
+
+  .team-name {
+    font-size: 13px;
+  }
+
+  .team-points {
+    font-size: 14px;
+  }
+}
