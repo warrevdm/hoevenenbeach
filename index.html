@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="responsive.css" />
   <link rel="stylesheet" href="mobile-fixes.css" />
   <link rel="stylesheet" href="title-fix.css" />
+  <link rel="stylesheet" href="teams.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
@@ -27,6 +28,7 @@
     <nav class="nav" aria-label="Hoofdnavigatie">
       <a href="#event">Event</a>
       <a href="#weekend">Weekend</a>
+      <a href="#teams">Ploegen</a>
       <a href="#praktisch">Praktisch</a>
       <a href="#partners">Partners</a>
     </nav>
@@ -121,24 +123,63 @@
       </div>
     </section>
 
-    <section class="legends section">
-      <div class="legends-badge reveal">SPECIAL MATCH</div>
-      <div class="legends-grid">
-        <div class="legends-copy reveal">
-          <p class="eyebrow dark">The Legends Game</p>
-          <h2>OLD SCHOOL.<br><span>STILL GOT IT.</span></h2>
-          <p>Voormalige toppers van het zand keren terug voor een speciale wedstrijd vol klasse, herkenning en competitiedrang.</p>
+    <section class="teams section" id="teams" aria-labelledby="teams-title">
+      <div class="section-kicker reveal">03 — Ingeschreven ploegen</div>
+      <div class="teams-head">
+        <div class="reveal">
+          <h2 id="teams-title">THE MEN.<br><span>THE MATCHUPS.</span></h2>
         </div>
-        <div class="legends-art reveal" aria-hidden="true">
-          <div class="net"></div>
-          <div class="scoreboard"><span>LEGENDS</span><strong>00 : 00</strong></div>
-          <div class="legend-ball"><span></span><span></span></div>
+        <div class="teams-intro reveal" id="teams-description">
+          <p>Vierentwintig herenteams staan ingeschreven voor Hoevenen Beach. Hieronder vind je de volledige deelnemerslijst en puntenstand.</p>
+          <div class="teams-meta">
+            <span>Heren</span>
+            <span>24 ploegen</span>
+            <span>Punten op 23/07/2026</span>
+          </div>
         </div>
+      </div>
+
+      <div class="teams-table-wrap reveal">
+        <table class="team-table" aria-describedby="teams-description">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Ploeg</th>
+              <th scope="col">Punten</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="team-rank">01</td><td class="team-name">Darras Arne - van Walle Tom</td><td class="team-points">2697</td></tr>
+            <tr><td class="team-rank">02</td><td class="team-name">De Keyser Seppe - De Keyser Jente</td><td class="team-points">2264</td></tr>
+            <tr><td class="team-rank">03</td><td class="team-name">Van Leemputten Arnor - Mees Bavo</td><td class="team-points">2021</td></tr>
+            <tr><td class="team-rank">04</td><td class="team-name">Joguenne Martin - Mannaert Tristan</td><td class="team-points">1712</td></tr>
+            <tr><td class="team-rank">05</td><td class="team-name">Vercauteren Yorre - Kindt Lou</td><td class="team-points">1656</td></tr>
+            <tr><td class="team-rank">06</td><td class="team-name">De Vriese Emiel - De Smijtere Len</td><td class="team-points">1600</td></tr>
+            <tr><td class="team-rank">07</td><td class="team-name">Looverie Arjen - Van Ysacker Seppe</td><td class="team-points">1388</td></tr>
+            <tr><td class="team-rank">08</td><td class="team-name">Roosemaryn Jente - Lambert Lars</td><td class="team-points">1363</td></tr>
+            <tr><td class="team-rank">09</td><td class="team-name">Servaes Lander - Follet Arthur</td><td class="team-points">1242</td></tr>
+            <tr><td class="team-rank">10</td><td class="team-name">Minnaert Yannick - De Bruyne Tim</td><td class="team-points">1230</td></tr>
+            <tr><td class="team-rank">11</td><td class="team-name">Vanmaercke Matts - Tavernier Ben</td><td class="team-points">1135</td></tr>
+            <tr><td class="team-rank">12</td><td class="team-name">Gillis Bo - Deleu Flor</td><td class="team-points">1056</td></tr>
+            <tr><td class="team-rank">13</td><td class="team-name">Heinesch Joachim - Everaerts Florian</td><td class="team-points">1016</td></tr>
+            <tr><td class="team-rank">14</td><td class="team-name">Foret Robin - Detandt Thibault</td><td class="team-points">973</td></tr>
+            <tr><td class="team-rank">15</td><td class="team-name">Hoornaert Lukas - Vandaele Seppe</td><td class="team-points">956</td></tr>
+            <tr><td class="team-rank">16</td><td class="team-name">De Bakker Nox - Van Daele Andy</td><td class="team-points">946</td></tr>
+            <tr><td class="team-rank">17</td><td class="team-name">Eennaes Noah - Walkowski Mathias</td><td class="team-points">936</td></tr>
+            <tr><td class="team-rank">18</td><td class="team-name">Acke Thibaud - De Bruycker Jeroen</td><td class="team-points">932</td></tr>
+            <tr><td class="team-rank">19</td><td class="team-name">Collignon Florent - Thévenin Victor</td><td class="team-points">926</td></tr>
+            <tr><td class="team-rank">20</td><td class="team-name">Kingma Liam - Baudson Thomas</td><td class="team-points">926</td></tr>
+            <tr><td class="team-rank">21</td><td class="team-name">Van Hoof Daan - Jansegers Ruben</td><td class="team-points">914</td></tr>
+            <tr><td class="team-rank">22</td><td class="team-name">Herremans Willem - Herremans Alexander</td><td class="team-points">846</td></tr>
+            <tr><td class="team-rank">23</td><td class="team-name">Peeters Joost - Fransen Michiel</td><td class="team-points">826</td></tr>
+            <tr><td class="team-rank">24</td><td class="team-name">Van de Wielle Tim - Deroo Sam</td><td class="team-points">502</td></tr>
+          </tbody>
+        </table>
       </div>
     </section>
 
     <section class="practical section" id="praktisch">
-      <div class="section-kicker reveal">03 — Praktisch</div>
+      <div class="section-kicker reveal">04 — Praktisch</div>
       <div class="practical-grid">
         <div class="practical-title reveal">
           <h2>SEE YOU<br>IN THE<br><span>SAND.</span></h2>
@@ -164,7 +205,7 @@
             <span class="info-index">03</span>
             <div>
               <h3>Wat?</h3>
-              <p>Belgian Beach Tour · 1★ manche<br>Twee beachcourts · Legends Game<br>Muziek · Food & drinks</p>
+              <p>Belgian Beach Tour · 1★ manche<br>Twee beachcourts · 24 herenteams<br>Muziek · Food & drinks</p>
             </div>
             <span class="info-icon">1★</span>
           </article>
@@ -173,7 +214,7 @@
     </section>
 
     <section class="partners section" id="partners">
-      <div class="section-kicker light reveal">04 — Partners</div>
+      <div class="section-kicker light reveal">05 — Partners</div>
       <div class="partners-head reveal">
         <h2>BUILT WITH<br>GOOD PEOPLE.</h2>
         <p>Hoevenen Beach wordt mogelijk gemaakt door partners die sport, beleving en lokale samenwerkingen mee vooruit duwen.</p>
