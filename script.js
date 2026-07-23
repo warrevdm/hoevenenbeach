@@ -1,3 +1,91 @@
+const pressArticles = [
+  {
+    source: 'HLN',
+    title: '14-jarige Noah Eennaes treft Belgische beachtoppers op pleinen waar hij zijn eerste volleybalstappen zette: “Op een paar honderd meter van thuis”',
+    url: 'https://www.hln.be/sport-in-de-buurt/14-jarige-noah-eennaes-treft-belgische-beachtoppers-op-pleinen-waar-hij-zijn-eerste-volleybalstappen-zette-op-een-paar-honderd-meter-van-thuis~a350d5c8/'
+  },
+  {
+    source: 'Het Nieuwsblad',
+    title: 'Hoevenen wordt voor het eerst halte van de Belgian Beach Tour',
+    url: 'https://www.nieuwsblad.be/regio/antwerpen/regio-antwerpen/stabroek/hoevenen-wordt-voor-het-eerst-halte-van-de-belgian-beach-tour/159054242.html'
+  },
+  {
+    source: 'Het Nieuwsblad',
+    title: 'Na afhaken van Antwerpen houdt Belgian Beach Tour voortaan halt in Hoevenen: “We hopen dat dit het begin van iets heel moois kan worden”',
+    url: 'https://www.nieuwsblad.be/sport/sportregio/na-afhaken-van-antwerpen-houdt-belgian-beach-tour-voortaan-halt-in-hoevenen-we-hopen-dat-dit-het-begin-van-iets-heel-moois-kan-worden/158698969.html'
+  },
+  {
+    source: 'Polderke',
+    title: 'Hoevenen maakt debuut als gastgemeente van de Belgian Beach Tour',
+    url: 'https://www.polderke.com/hoevenen-maakt-debuut-als-gastgemeente-van-de-belgian-beach-tour/'
+  },
+  {
+    source: 'AD',
+    title: 'Belgian Beach Tour strijkt voor het eerst neer in Hoevenen: Tom van Walle en Sam Deroo aan de start',
+    url: 'https://www.ad.nl/woensdrecht/belgian-beach-tour-strijkt-voor-het-eerst-neer-in-hoevenen-tom-van-walle-en-sam-deroo-aan-de-start~ae86236a/276121773/'
+  }
+];
+
+function addPressSection() {
+  if (document.getElementById('press')) return;
+
+  if (!document.querySelector('link[href="press.css"]')) {
+    const stylesheet = document.createElement('link');
+    stylesheet.rel = 'stylesheet';
+    stylesheet.href = 'press.css';
+    document.head.appendChild(stylesheet);
+  }
+
+  const practicalSection = document.getElementById('praktisch');
+  if (!practicalSection) return;
+
+  const pressSection = document.createElement('section');
+  pressSection.className = 'press section';
+  pressSection.id = 'press';
+  pressSection.setAttribute('aria-labelledby', 'press-title');
+
+  const cards = pressArticles.map((article, index) => `
+    <article class="press-card reveal">
+      <a href="${article.url}" target="_blank" rel="noopener noreferrer" aria-label="Lees artikel van ${article.source}: ${article.title}">
+        <div class="press-source-row">
+          <span class="press-source">${article.source}</span>
+          <span class="press-arrow" aria-hidden="true">↗</span>
+        </div>
+        <h3 class="press-title">${article.title}</h3>
+      </a>
+    </article>
+  `).join('');
+
+  pressSection.innerHTML = `
+    <div class="section-kicker reveal">04 — Gezien in de pers</div>
+    <div class="press-head">
+      <div class="reveal">
+        <h2 id="press-title">MAKING<br><span>HEADLINES.</span></h2>
+      </div>
+      <p class="reveal">Hoevenen Beach haalt de regionale en nationale pers. Lees de artikels over het tornooi, de locatie en de spelers aan de start.</p>
+    </div>
+    <div class="press-grid">${cards}</div>
+  `;
+
+  practicalSection.before(pressSection);
+
+  const navigation = document.querySelector('.nav');
+  if (navigation && !navigation.querySelector('a[href="#press"]')) {
+    const pressLink = document.createElement('a');
+    pressLink.href = '#press';
+    pressLink.textContent = 'Pers';
+    const practicalLink = navigation.querySelector('a[href="#praktisch"]');
+    navigation.insertBefore(pressLink, practicalLink || null);
+  }
+
+  const practicalKicker = document.querySelector('.practical .section-kicker');
+  const partnersKicker = document.querySelector('.partners .section-kicker');
+  if (practicalKicker) practicalKicker.textContent = '05 — Praktisch';
+  if (partnersKicker) partnersKicker.textContent = '06 — Partners';
+}
+
+addPressSection();
+
 const revealElements = document.querySelectorAll('.reveal');
 
 const observer = new IntersectionObserver((entries) => {
