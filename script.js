@@ -25,3 +25,37 @@ if (hero && ball && !window.matchMedia('(prefers-reduced-motion: reduce)').match
     ball.style.translate = `${x * 18}px ${y * 18}px`;
   });
 }
+
+// Van de Wielle Tim - Deroo Sam received a wildcard and is seeded eighth.
+const teamsBody = document.querySelector('.team-table tbody');
+
+if (teamsBody) {
+  const rows = [...teamsBody.querySelectorAll('tr')];
+  const wildcardRow = rows.find((row) =>
+    row.querySelector('.team-name')?.textContent.includes('Van de Wielle Tim - Deroo Sam')
+  );
+
+  if (wildcardRow) {
+    const eighthRow = rows[7];
+
+    if (eighthRow && wildcardRow !== eighthRow) {
+      teamsBody.insertBefore(wildcardRow, eighthRow);
+    }
+
+    wildcardRow.classList.add('wildcard-team');
+    wildcardRow.setAttribute('aria-label', 'Seed 8: Van de Wielle Tim en Deroo Sam, wildcard');
+
+    const teamName = wildcardRow.querySelector('.team-name');
+    if (teamName && !teamName.querySelector('.wildcard-badge')) {
+      const badge = document.createElement('span');
+      badge.className = 'wildcard-badge';
+      badge.textContent = 'Wildcard';
+      teamName.appendChild(badge);
+    }
+
+    [...teamsBody.querySelectorAll('tr')].forEach((row, index) => {
+      const rank = row.querySelector('.team-rank');
+      if (rank) rank.textContent = String(index + 1).padStart(2, '0');
+    });
+  }
+}
