@@ -1,24 +1,6 @@
-const pressPhotos = [
-  'assets/press/pwa2026052424408.jpg',
-  'assets/press/pwa202605246796.jpg'
-];
-
-const pressImages = document.querySelectorAll('.press-card .press-image');
-pressImages.forEach((image, index) => {
-  image.src = pressPhotos[index % pressPhotos.length];
-  image.alt = `Beachvolley in actie — persfoto ${index % pressPhotos.length + 1}`;
-  image.loading = index === 0 ? 'eager' : 'lazy';
-  image.decoding = 'async';
-});
-
-const pressCredit = document.querySelector('.press-image-credit');
-if (pressCredit) {
-  pressCredit.textContent = "Foto's: Pim Waslander - Volley Vlaanderen.";
-}
-
 const revealElements = document.querySelectorAll('.reveal');
 
-if ('IntersectionObserver' in window) {
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -26,58 +8,28 @@ if ('IntersectionObserver' in window) {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px -35px' });
 
   revealElements.forEach((element, index) => {
-    element.style.transitionDelay = `${Math.min(index % 4, 3) * 70}ms`;
+    element.style.transitionDelay = `${Math.min(index % 4, 3) * 65}ms`;
     observer.observe(element);
   });
 } else {
   revealElements.forEach((element) => element.classList.add('is-visible'));
 }
 
-const hero = document.querySelector('.hero');
-const ball = document.querySelector('.hero-ball');
+const header = document.querySelector('.site-header');
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const targetId = link.getAttribute('href');
+    if (!targetId || targetId === '#') return;
 
-if (hero && ball && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  hero.addEventListener('pointermove', (event) => {
-    const rect = hero.getBoundingClientRect();
-    const x = (event.clientX - rect.left) / rect.width - 0.5;
-    const y = (event.clientY - rect.top) / rect.height - 0.5;
-    ball.style.translate = `${x * 18}px ${y * 18}px`;
+    const target = document.querySelector(targetId);
+    if (!target) return;
+
+    event.preventDefault();
+    const headerOffset = header?.offsetHeight ?? 0;
+    const top = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+    window.scrollTo({ top, behavior: 'smooth' });
   });
-}
-
-// Van de Wielle Tim - Deroo Sam received a wildcard and is seeded eighth.
-const teamsBody = document.querySelector('.team-table tbody');
-
-if (teamsBody) {
-  const rows = [...teamsBody.querySelectorAll('tr')];
-  const wildcardRow = rows.find((row) =>
-    row.querySelector('.team-name')?.textContent.includes('Van de Wielle Tim - Deroo Sam')
-  );
-
-  if (wildcardRow) {
-    const eighthRow = rows[7];
-
-    if (eighthRow && wildcardRow !== eighthRow) {
-      teamsBody.insertBefore(wildcardRow, eighthRow);
-    }
-
-    wildcardRow.classList.add('wildcard-team');
-    wildcardRow.setAttribute('aria-label', 'Seed 8: Van de Wielle Tim en Deroo Sam, wildcard');
-
-    const teamName = wildcardRow.querySelector('.team-name');
-    if (teamName && !teamName.querySelector('.wildcard-badge')) {
-      const badge = document.createElement('span');
-      badge.className = 'wildcard-badge';
-      badge.textContent = 'Wildcard';
-      teamName.appendChild(badge);
-    }
-
-    [...teamsBody.querySelectorAll('tr')].forEach((row, index) => {
-      const rank = row.querySelector('.team-rank');
-      if (rank) rank.textContent = String(index + 1).padStart(2, '0');
-    });
-  }
-}
+});
